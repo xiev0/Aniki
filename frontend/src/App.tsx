@@ -1,29 +1,33 @@
 import "@/App.css"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
+import { SidebarProvider, Sidebar, SidebarContent, SidebarGroup, SidebarMenu, SidebarMenuItem, SidebarTrigger } from "@/components/ui/sidebar"
 
-function App() {
+function App({ children }: { children: React.ReactNode }) {
   return (
     <>
-      <header>
-          <div>Aniki</div>
-
-          <Input placeholder="Найти..." />
-
-          <Button>Profile</Button>
-      </header>
-
         <aside>
+            <SidebarProvider>
+                <div className="flex h-screen">
+                    <Sidebar>
+                        <SidebarContent>
+                            <SidebarGroup>
+                                <SidebarMenu>
+                                    <SidebarMenuItem>Главная</SidebarMenuItem>
+                                    <SidebarMenuItem>Проекты</SidebarMenuItem>
+                                </SidebarMenu>
+                            </SidebarGroup>
+                        </SidebarContent>
+                    </Sidebar>
+
+                    <main className="flex-1 overflow-auto">
+                        <div className="p-4">
+                            <SidebarTrigger />
+                            {children}
+                        </div>
+                    </main>
+                </div>
+            </SidebarProvider>
 
         </aside>
-
-        <main>
-            <div className="bg-primary text-primary-foreground">Hello</div>
-        </main>
-
-        <footer>
-
-        </footer>
     </>
   )
 }
