@@ -1,34 +1,13 @@
 import "@/App.css"
-import { SidebarProvider, Sidebar, SidebarContent, SidebarGroup, SidebarMenu, SidebarMenuItem, SidebarTrigger } from "@/components/ui/sidebar"
+import Page from "@/app/dashboard/page.tsx";
+import { ThemeProvider } from "@/components/theme-provider"
 
-function App({ children }: { children: React.ReactNode }) {
+function App() {
   return (
-    <>
-        <aside>
-            <SidebarProvider>
-                <div className="flex h-screen">
-                    <Sidebar>
-                        <SidebarContent>
-                            <SidebarGroup>
-                                <SidebarMenu>
-                                    <SidebarMenuItem>Главная</SidebarMenuItem>
-                                    <SidebarMenuItem>Проекты</SidebarMenuItem>
-                                </SidebarMenu>
-                            </SidebarGroup>
-                        </SidebarContent>
-                    </Sidebar>
 
-                    <main className="flex-1 overflow-auto">
-                        <div className="p-4">
-                            <SidebarTrigger />
-                            {children}
-                        </div>
-                    </main>
-                </div>
-            </SidebarProvider>
-
-        </aside>
-    </>
+      <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+          <Page />
+      </ThemeProvider>
   )
 }
 
